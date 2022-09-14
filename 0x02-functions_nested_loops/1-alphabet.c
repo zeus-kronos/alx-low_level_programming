@@ -1,21 +1,20 @@
 #include <stdio.h>
-/*
- * File: 1-alphabet.c
- * Auth: Zeus Kronos
- */
-
-#include "main.h"
+#include <main.h>
 
 /**
- * print_alphabet - prints the alphabet in lowercase, followed by a new line.
+ * print_alphabet - This function prints the alphabet in lowercase
+ * followed by a new line
  */
 
 void print_alphabet(void)
 {
-	char letter;
+	int ch;
 
-	for (letter = 'a'; letter <= 'z'; letter++)
-		_putchar(letter);
+	for (ch = 'a'; ch <= 'z'; ch++)
+	{
+		_putchar(ch);
+	}
 
 	_putchar('\n');
+
 }
