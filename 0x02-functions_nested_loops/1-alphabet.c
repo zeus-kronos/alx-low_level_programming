@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * main - check the code
- * Return: Always 0.
- */
-int main(void)
+* print_alphabet - Starting point
+* Return: Always 0.
+*/
+void print_alphabet(void)
 {
 	char c;
 
@@ -13,5 +13,4 @@ int main(void)
 		_putchar(c);
 	}
 	_putchar('\n');
-	return(0);
 }
