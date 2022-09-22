@@ -1,3 +1,7 @@
+# 0x01. C - Variables, if, else, while 
+
+## File description
+
 Task 0 - Assigns a random number to the variable n each time it is executed. Complete source code that prints whether the number stored in the variable n is positive or negative.
 
 Task 1 - Program assigns a random number to the variable n each time it is executed and print the last digit of the number stored in the variable n.
