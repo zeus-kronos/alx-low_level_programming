@@ -18,3 +18,8 @@ Topics covered in these projects include data structures (e.g. arrrays, linked l
 | 0x05. C - More pointers, arrays and strings |
 
 | 0x06. C - Even more pointers, arrays and strings |
+
+
+## Author 
+
+***Gabriel Dan Alias Zeus Kronorz*** [https://github.com/zeus-kronos/]
