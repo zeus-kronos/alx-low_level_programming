@@ -1,6 +1,6 @@
 # 0x00. C - Hello, World 
 
-## Files and their descriptions
+## File description
 
 Script in 0-preprocessor file writes a script that runs a C file through the preprocessor and saves the result into another file.
 
