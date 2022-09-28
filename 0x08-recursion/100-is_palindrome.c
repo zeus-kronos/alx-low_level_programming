@@ -1,58 +1,51 @@
-include "main.h"
+#include "main.h"
 
 /**
-* check - Checker for the palindrome
+* palind2 - obtains length of a
+* @a: string
+* @l: integer to count length
 *
-* @s: String
-*
-* @start: int moves from right to left
-*
-* @end: int move from left to right
-*
-* @pair: int
-*
-* Return: 0 or 1
+* Return: On success 1.
+* On error, -1 is returned, and errno is set appropriately.
 */
 
-int check(char *s, int start, int end, int pair)
+int palind2(char *a, int l)
 {
-	if ((start == end && pair != 0) || (start == end + 1 && pair == 0))
-		return (1);
-	else if (s[start] != s[end])
+	if (*a == 0)
+		return (l - 1);
+	return (palind2(a + 1, l + 1));
+}
+
+/**
+* palind3 - compares string vs string reverse
+* @a: string
+* @l: length
+*
+* Return: On success 1.
+* On error, -1 is returned, and errno is set appropriately.
+*/
+
+int palind3(char *a, int l)
+{
+	if (*a != *(a + l))
 		return (0);
-	else
-		return (check(s, start + 1, end - 1, pair));
+	else if (*a == 0)
+		return (1);
+	return (palind3(a + 1, l - 2));
 }
 
 /**
-* last_index - Returns the last index of a string (counts the null char)
+* is_palindrome - checks if a string is a palindrome
+* @s: string to evaluate
 *
-* @s: Pointer the string
-*
-* Return: int
-*/
-
-int last_index(char *s)
-{
-	int n = 0;
-
-	if (*s > '\0')
-		n += last_index(s + 1) + 1;
-
-	return (n);
-}
-
-/**
-* is_palindrome - Check if a string is a palindrome
-*
-* @s: String to check
-*
-* Return: 0 or 1
+* Return: On success 1.
+* On error, -1 is returned, and errno is set appropriately.
 */
 
 int is_palindrome(char *s)
 {
-	int end = last_index(s);
+	int l;
 
-	return (check(s, 0, end - 1, end % 2));
+	l = palind2(s, 0);
+	return (palind3(s, l));
 }
