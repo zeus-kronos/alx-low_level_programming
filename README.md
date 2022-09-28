@@ -19,6 +19,7 @@ Topics covered in these projects include data structures (e.g. arrrays, linked l
 
 | 0x06. C - Even more pointers, arrays and strings |
 
+| 0x07. C - Recursion |
 
 ## Author 
 
