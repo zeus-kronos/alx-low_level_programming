@@ -23,6 +23,10 @@ Topics covered in these projects include data structures (e.g. arrrays, linked l
 
 | 0x08. C - Recursion |
 
+| 0x09-static_libraries |
+
+| 0x0A-argc_argv |
+
 ## Author 
 
 **Gabriel Dan** | **Alias:** *Zeus*
