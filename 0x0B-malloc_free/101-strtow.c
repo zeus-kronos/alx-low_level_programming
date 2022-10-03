@@ -1,59 +1,148 @@
-#include "main.h"
 #include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
+#include "main.h"
 
 /**
-* strtow - splits a string to words
-* @str: string to split
-* Return: a point to an array of strings or NULL
+* count_words - function that count words in a string
+* separated by a blank space
+* Return: number of words in the string
+* @str pointer to the string
+*/
+
+int count_words(char *str)
+{
+	int words = 0;
+	int flagbs = 0;
+	int i = 0;
+
+	while (*(str + i))
+	{
+		if ((*(str + i) == ' ' || *(str + i + 1) == 0) && flagbs)
+		{
+			flagbs = 0;
+			words++;
+		}
+		if (*(str + i) != ' ')
+			flagbs = 1;
+		i++;
+	}
+	if (*(str + i - 1) != ' ' && *(str + i - 2) == ' ')
+		words++;
+	if (i == 1 && *str != ' ')
+		words++;
+	return (words);
+}
+
+/**
+* look_pos - function that stores the begining and the end position of a word
+* in a string
+* @str: pointer to the string
+* @pos: pointer ti the array used to store the positions
+*/
+
+void look_pos(char *str, int *pos)
+{
+	int flagw = 1;
+	int k = 0;
+	int i = 0;
+
+	while (*(str + i))
+	{
+		if (*(str + i) != ' '  && *(str + i + 1) == 0 && flagw)
+		{
+			*(pos + k) = i;
+			*(pos + k + 1) = i;
+		}
+		if (*(str + i) != ' ' && *(str + i) != 0 && flagw)
+		{
+			flagw = 0;
+			*(pos + k) = i;
+			k++;
+		}
+		if (*(str + i + 1) == 0 && (flagw == 0))
+			*(pos + k) = i;
+		if (*(str + i + 1) == ' ' && *(str + i) != ' ')
+		{
+			*(pos + k) = i;
+			k++;
+		}
+		if (*(str + i) == ' ')
+			flagw = 1;
+		i++;
+	}
+}
+/**
+* print_words - function that stores in m the words found in str
+* Return: 1 if fail.
+* @m: pointer to the matrix
+* @pos: pointer to the array with positions
+* @words: number of words
+* @str: pointer to the string
+*/
+
+int print_words(int *pos, char **m, char *str, int words)
+{
+	int b = 0;
+	int b1 = 0;
+	int l = 0;
+
+	for (b = 0; b < words; b++)
+	{
+		int p1 = *(pos + b1);
+		int p2 = *(pos + b1 + 1);
+		int sz = p2 - p1 + 2;
+		*(m + b) = (char *)malloc(sizeof(char) * (sz));
+		if (*(m + b) == NULL)
+		{
+			for (b = b - 1; b >= 0; b--)
+				free(*(m + b));
+			free(m);
+			free(pos);
+			return (1);
+		}
+		for (l = 0; l < sz - 1; l++, p1++)
+			*(*(m + b) + l) = *(str + p1);
+		*(*(m + b) + l) = '\0';
+				b1 = b1 + 2;
+	}
+	*(m + b) = NULL;
+	return (0);
+}
+
+/**
+* strtow - function that returns a pointer to an array of strings (words)
+* Return: pointer to the array
+* @str: pointer to the array
 */
 
 char **strtow(char *str)
 {
-	char **arr_words = NULL;
-	int i, j = 0, wlen, slen, words = 0, sig = 0, pre_sig = 0;
+	int words;
+	char **m = NULL;
+	int *pos = NULL;
 
-	if (str == NULL)
+	if (str == NULL || *str == 0)
 		return (NULL);
-	slen = strlen(str);
-	for (i = 0; i < slen; i++)
-	{
-		sig = (str[i] == 32 || str[i] == '\t') ? 0 : 1;
-		words = (pre_sig == 0 && sig == 1) ? words + 1 : words;
-		pre_sig = sig;
-	}
+	words = count_words(str);
 	if (words == 0)
 		return (NULL);
-	arr_words = malloc(words * sizeof(char *));
-	if (arr_words == NULL)
+	m = (char **) malloc((sizeof(char *) * (words + 1)));
+	if (m == NULL)
 	{
-		free(arr_words);
+		for (words = words - 1; words >= 0; words--)
+			free(*(m + words));
+		free(m);
 		return (NULL);
 	}
-	words = 0;
-	for (i = 0; i < slen; i++)
+	pos = (int *)malloc(sizeof(int) * words * 2);
+	if (pos == NULL)
 	{
-		sig = (str[i] == 32 || str[i] == 9) ? 0 : 1;
-		if (sig)
-		{
-			for (j = 0; str[i + j] != 32 && str[i + j] != 9; j++)
-				;
-			wlen = j;
-			arr_words[words] = malloc(wlen * sizeof(char));
-			if (arr_words[words] == NULL)
-			{
-				for (; words >= 0; words--)
-					free(arr_words[words]);
-				free(arr_words);
-				return (NULL);
-			}
-			for (j = 0; j < wlen; j++)
-			{
-				arr_words[words][j] = str[i + j];
-			}
-			words++;
-			i += wlen - 1;
-		}
+		free(m);
+		free(pos);
+		return (NULL);
 	}
-	return (arr_words);
+	look_pos(str, pos);
+	if (print_words(pos, m, str, words))
+		return (NULL);
+	return (m);
 }
