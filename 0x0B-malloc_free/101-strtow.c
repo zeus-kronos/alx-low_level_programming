@@ -1,100 +1,59 @@
 #include "main.h"
+#include <stdlib.h>
+#include <string.h>
 
 /**
-*strtow - splits a stirng into words
-*@str: string to be splitted
-*
-*Return: pointer to the array of splitted words
+* strtow - splits a string to words
+* @str: string to split
+* Return: a point to an array of strings or NULL
 */
 
 char **strtow(char *str)
 {
-char **split;
-int i, j = 0, temp = 0, size = 0, words = num_words(str);
+	char **arr_words = NULL;
+	int i, j = 0, wlen, slen, words = 0, sig = 0, pre_sig = 0;
 
-if (words == 0)
-return (NULL);
-split = (char **) malloc(sizeof(char *) * (words + 1));
-if (split != NULL)
-{
-for (i = 0; i <= len(str) && words; i++)
-{
-if ((str[i] != ' ') && (str[i] != '\0'))
-size++;
-else if (((str[i] == ' ') || (str[i] == '\0')) && i && (str[i - 1] != ' '))
-{
-split[j] = (char *) malloc(sizeof(char) * size + 1);
-if (split[j] != NULL)
-{
-while (temp < size)
-{
-split[j][temp] = str[(i - size) +temp];
-temp++;
-}
-split[j][temp] = '\0';
-size = temp = 0;
-j++;
-}
-else
-{
-while (j-- >= 0)
-free(split[j]);
-free(split);
-return (NULL);
-}
-}
-}
-split[words] = NULL;
-return (split);
-}
-else
-return (NULL);
-}
-
-/**
-* num_words - counts the number of words in str
-*@str: string to be used
-*
-*Return: number of words
-*/
-int num_words(char *str)
-{
-int i = 0, words = 0;
-
-while (i <= len(str))
-{
-if ((str[i] != ' ') && (str[i] != '\0'))
-{
-i++;
-}
-else if (((str[i] == ' ') || (str[i] == '\0')) && i && (str[i - 1] != ' '))
-{
-words += 1;
-i++;
-}
-else
-{
-i++;
-}
-}
-return (words);
-}
-
-/**
-* len - returns length of str
-*@str: string to be counted
-*
-* Return: length of the string
-*/
-
-int len(char *str)
-{
-int len = 0;
-
-if (str != NULL)
-{
-while (str[len])
-len++;
-}
-return (len);
+	if (str == NULL)
+		return (NULL);
+	slen = strlen(str);
+	for (i = 0; i < slen; i++)
+	{
+		sig = (str[i] == 32 || str[i] == '\t') ? 0 : 1;
+		words = (pre_sig == 0 && sig == 1) ? words + 1 : words;
+		pre_sig = sig;
+	}
+	if (words == 0)
+		return (NULL);
+	arr_words = malloc(words * sizeof(char *));
+	if (arr_words == NULL)
+	{
+		free(arr_words);
+		return (NULL);
+	}
+	words = 0;
+	for (i = 0; i < slen; i++)
+	{
+		sig = (str[i] == 32 || str[i] == 9) ? 0 : 1;
+		if (sig)
+		{
+			for (j = 0; str[i + j] != 32 && str[i + j] != 9; j++)
+				;
+			wlen = j;
+			arr_words[words] = malloc(wlen * sizeof(char));
+			if (arr_words[words] == NULL)
+			{
+				for (; words >= 0; words--)
+					free(arr_words[words]);
+				free(arr_words);
+				return (NULL);
+			}
+			for (j = 0; j < wlen; j++)
+			{
+				arr_words[words][j] = str[i + j];
+			}
+			words++;
+			i += wlen - 1;
+		}
+	}
+	return (arr_words);
 }
