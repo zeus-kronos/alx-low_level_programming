@@ -6,7 +6,7 @@
 * count_words - function that count words in a string
 * separated by a blank space
 * Return: number of words in the string
-* @str pointer to the string
+* @str: pointer to the string
 */
 
 int count_words(char *str)
