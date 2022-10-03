@@ -7,7 +7,7 @@
 *
 * @av: Pointer to arguments
 *
-* Retunr: Pointer to concatenated string (SUCCESS) or
+* Return: Pointer to concatenated string (SUCCESS) or
 * NULL if @ac == 0 or @av == NULL (FAILURE) or
 * NULL if if insufficient memory was available (FAILURE)
 */
