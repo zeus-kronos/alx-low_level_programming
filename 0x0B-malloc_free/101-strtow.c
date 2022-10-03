@@ -2,42 +2,51 @@
 #include "main.h"
 
 /**
-* **strtow - function that splits a string into words.
-* @str : pointer
-* Return: Char
+* strtow - function that splits string into words
+* @str: string being passed
+* Return: null if string is empty or null or function fails
 */
 
 char **strtow(char *str)
 {
-	char **d;
-	int i;
-	int j = 0;
-	int con = 0;
+	int total_words = 0, b = 0, c = 0, length = 0;
+	char **words, *found_word;
 
-	if (str == NULL)
+	if (str == 0 || *str == 0)
 		return (NULL);
-
-	for (i = 0 ; str[i] != '\0' ; i++)
-	{
-		if (str[i] != 32)
-			con++;
-	}
-
-	d = malloc(sizeof(char) * con);
-
-	if (d == NULL)
+	total_words = number(str);
+	if (total_words == 0)
 		return (NULL);
-
-	for (i = 0 ; str[i] != '\0' ; i++)
+	words = malloc((total_words + 1) * sizeof(char *));
+	if (words == 0)
+		return (NULL);
+	for (; *str != '\0' &&  b < total_words;)
 	{
-		if (str[i] != 32)
-		{
-			*d[j] = str[i];
-			j++;
-		}
+		if (*str == ' ')
+			str++;
 		else
 		{
+			found_word = str;
+			for (; *str != ' ' && *str != '\0';)
+			{
+				length++;
+				str++;
+			}
+			words[b] = malloc((length + 1) * sizeof(char));
+			if (words[b] == 0)
+			{
+				free_everything(words, b);
+				return (NULL);
+			}
+			while (*found_word != ' ' && *found_word != '\0')
+			{
+				words[b][c] = *found_word;
+				found_word++;
+				c++;
+			}
+			words[b][c] = '\0';
+			b++; c = 0; length = 0; str++;
 		}
 	}
-	return (d);
+	return (words);
 }
