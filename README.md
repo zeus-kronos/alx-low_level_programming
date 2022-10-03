@@ -27,6 +27,8 @@ Topics covered in these projects include data structures (e.g. arrrays, linked l
 
 | 0x0A-argc_argv |
 
+| 0x0B-malloc_free |
+
 ## Author 
 
 **Gabriel Dan** | **Alias:** *Zeus*
