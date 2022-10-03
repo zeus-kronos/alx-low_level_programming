@@ -124,8 +124,9 @@ char **strtow(char *str)
 	if (str == NULL || *str == 0)
 		return (NULL);
 	words = count_words(str);
-	if (words == 0)
+	if (words == 0) {
 		return (NULL);
+	}
 	m = (char **) malloc((sizeof(char *) * (words + 1)));
 	if (m == NULL)
 	{
@@ -142,7 +143,8 @@ char **strtow(char *str)
 		return (NULL);
 	}
 	look_pos(str, pos);
-	if (print_words(pos, m, str, words))
+	if (print_words(pos, m, str, words)) {
 		return (NULL);
+	}
 	return (m);
 }
