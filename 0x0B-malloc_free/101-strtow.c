@@ -1,59 +1,50 @@
 #include "main.h"
-#include <stdlib.h>
-#include <string.h>
 
 /**
-* strtow - splits a string to words
-* @str: string to split
-* Return: a point to an array of strings or NULL
+* strtow - split `str' into array of words using spaces to delimit words
+* @str: string of space-separated words
+*
+* Return: pointer to array of strings, or NULL on failure
 */
 
 char **strtow(char *str)
 {
-	char **arr_words = NULL;
-	int i, j = 0, wlen, slen, words = 0, sig = 0, pre_sig = 0;
+	int i, j, k, nwords, end, begin;
+	char **p;
 
-	if (str == NULL)
+	if (str == NULL || *str == '\0')
 		return (NULL);
-	slen = strlen(str);
-	for (i = 0; i < slen; i++)
-	{
-		sig = (str[i] == 32 || str[i] == '\t') ? 0 : 1;
-		words = (pre_sig == 0 && sig == 1) ? words + 1 : words;
-		pre_sig = sig;
-	}
-	if (words == 0)
+	nwords = get_nwords(str);
+	if (nwords == 0)
 		return (NULL);
-	arr_words = malloc(words * sizeof(char *));
-	if (arr_words == NULL)
-	{
-		free(arr_words);
+	++nwords;
+	p = (char **) malloc(nwords * sizeof(char *));
+	if (p == NULL)
 		return (NULL);
-	}
-	words = 0;
-	for (i = 0; i < slen; i++)
+	i = j = 0;
+	while (str[i])
 	{
-		sig = (str[i] == 32 || str[i] == 9) ? 0 : 1;
-		if (sig)
+		while (str[i] && str[i] == ' ')
+			++i;
+		if (str[i] == '\0')
+			break;
+		begin = i;
+		while (str[i] && str[i] != ' ')
+			++i;
+		end = i;
+		p[j] = (char *) malloc((end - begin + 1) * sizeof(char));
+		if (p[j] == NULL)
 		{
-			for (j = 0; str[i + j] != 32 && str[i + j] != 9; j++)
-				;
-			wlen = j;
-			arr_words[words] = malloc(wlen * sizeof(char));
-			if (arr_words[words] == NULL)
-			{
-				for (; words >= 0; words--)
-					free(arr_words[words]);
-				free(arr_words);
-				return (NULL);
-			}
-			for (j = 0; j < wlen; j++)
-			{
-				arr_words[words][j] = str[i + j];
-			}
-			words++;
-			i += wlen - 1;
+			free(p[j]);
+			while (j)
+				free(p[--j]);
+			free(p);
+			return (NULL);
 		}
+		for (k = 0; k < (end - begin); ++k)
+			p[j][k] = str[begin + k];
+		p[j++][k] = '\0';
 	}
-	return (arr_words);
+	p[j] = NULL;
+	return (p);
 }
