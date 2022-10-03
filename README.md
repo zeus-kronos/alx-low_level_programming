@@ -13,7 +13,7 @@ This repository contains programs written in C for my Low Level Programming proj
 Topics covered in these projects include data structures (e.g. arrrays, linked lists, binary trees), algorithms (e.g. searching, sorting) and more.
 
 ## Projects
---------------------------------------
+
 | 0x00. C - Hello, World |
 
 | 0x01. C - Variables, if, else, while |
