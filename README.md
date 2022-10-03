@@ -1,3 +1,14 @@
+#SCHOOL
+
+     _____     ______     ____    ____  
+    /  _  \    |    |     \    \/    / 
+   /  /_\  \   |    |      \   ||   /   
+  /    |    \  |    |___   /   ||   \   
+ /_____|_____\ |_________\/    /\    \  
+/____/   \____\|________ /____/  \    \
+                                  \____\
+                                               
+
 # Low Level Programming
 
 This repository contains programs written in C for my Low Level Programming projects in ALX software engineering curriculum. 
