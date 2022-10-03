@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
 * strtow - split `str' into array of words using spaces to delimit words
