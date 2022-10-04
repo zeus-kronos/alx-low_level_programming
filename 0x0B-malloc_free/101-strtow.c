@@ -128,7 +128,7 @@ char **strtow(char *str)
 	{
 		return (NULL);
 	}
-	m = (char **) malloc((sizeof(char *) * (words + 1)));
+	m = (char **) malloc((sizeof(char *) * (words + 2)));
 	if (m == NULL)
 	{
 		for (words = words - 1; words >= 0; words--)
@@ -136,7 +136,7 @@ char **strtow(char *str)
 		free(m);
 		return (NULL);
 	}
-	pos = (int *)malloc(sizeof(int) * words * 1.5);
+	pos = (int *)malloc(sizeof(int) * words * 2);
 	if (pos == NULL)
 	{
 		free(m);
