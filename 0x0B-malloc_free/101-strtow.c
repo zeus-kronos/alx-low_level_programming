@@ -136,7 +136,7 @@ char **strtow(char *str)
 		free(m);
 		return (NULL);
 	}
-	pos = (int *)malloc(sizeof(int) * words * 8);
+	pos = (int *)malloc(sizeof(int) * words * 1.5);
 	if (pos == NULL)
 	{
 		free(m);
