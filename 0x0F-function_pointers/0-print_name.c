@@ -11,5 +11,5 @@
 void print_name(char *name, void (*f)(char *))
 {
 	if(name != NULL && f != NULL)
-		f("Hello, my name is %s\n", name);
+		*f(name);
 }
