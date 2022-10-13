@@ -6,7 +6,6 @@
 * @f: pointer to a function
 *
 * Description: prints a name using function pointers
-*
 * Return: void
 */
 
