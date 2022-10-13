@@ -44,6 +44,10 @@ Topics covered in these projects include data structures (e.g. arrrays, linked l
 
 | 0x0E-structures_typedef |
 
+| 0x0F-function_pointers |
+
+| 0x10. C - Variadic functions |
+
 ## Author 
 
 **Gabriel Dan** | **Alias:** *Zeus*
