@@ -48,6 +48,8 @@ Topics covered in these projects include data structures (e.g. arrrays, linked l
 
 | 0x10. C - Variadic functions |
 
+| 0x12-singly_linked_lists |
+
 ## Author 
 
 **Gabriel Dan** | **Alias:** *Zeus*
