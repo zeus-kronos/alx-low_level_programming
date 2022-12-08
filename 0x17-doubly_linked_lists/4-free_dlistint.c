@@ -1,5 +1,4 @@
 #include "lists.h"
-
 /**
 * free_dlistint - frees a dlistint_t list
 * @head: pointer to head of the dlistint_t list to be freed
