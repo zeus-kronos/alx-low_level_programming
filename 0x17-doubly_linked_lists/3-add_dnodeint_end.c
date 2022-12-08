@@ -3,11 +3,11 @@
 dlistint_t *_add_dnodeint(dlistint_t **head, const int n);
 
 /**
- * add_dnodeint_end - adds a new node at the end of a dlistint_t list
- * @head: double pointer to head of the list
- * @n: value n of the new node to be added to the list
- * Return: address of the new element, or NULL if it failed
- */
+* add_dnodeint_end - adds a new node at the end of a dlistint_t list
+* @head: double pointer to head of the list
+* @n: value n of the new node to be added to the list
+* Return: address of the new element, or NULL if it failed
+*/
 
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
@@ -36,11 +36,11 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 }
 
 /**
- * _add_dnodeint - adds a new node at the beginning of a dlistint_t list
- * @head: double pointer to the head of the list
- * @n: value n of the new node to be added to the list
- * Return:  the address of the new element, or NULL if it failed
- */
+* _add_dnodeint - adds a new node at the beginning of a dlistint_t list
+* @head: double pointer to the head of the list
+* @n: value n of the new node to be added to the list
+* Return:  the address of the new element, or NULL if it failed
+*/
 
 dlistint_t *_add_dnodeint(dlistint_t **head, const int n)
 {
