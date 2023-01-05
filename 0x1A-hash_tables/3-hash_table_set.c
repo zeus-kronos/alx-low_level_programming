@@ -1,11 +1,12 @@
 #include "hash_tables.h"
 
 /**
- * str_copy - Creates a copy of a given string.
- * @s: The string to copy.
- *
- * Return: A pointer to the created string, otherwise NULL.
- */
+* str_copy - Creates a copy of a given string.
+* @s: The string to copy.
+*
+* Return: A pointer to the created string, otherwise NULL.
+*/
+
 char *str_copy(const char *s)
 {
 	int i, len;
@@ -26,13 +27,14 @@ char *str_copy(const char *s)
 }
 
 /**
- * hash_table_set - Adds an element to a given hash table.
- * @ht: The hash table that will contain the element.
- * @key: The key of the element to add.
- * @value: The value of the element to add.
- *
- * Return: 1 if the addition was successful, otherwise 0.
- */
+* hash_table_set - Adds an element to a given hash table.
+* @ht: The hash table that will contain the element.
+* @key: The key of the element to add.
+* @value: The value of the element to add.
+*
+* Return: 1 if the addition was successful, otherwise 0.
+*/
+
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long idx;
