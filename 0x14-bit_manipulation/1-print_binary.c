@@ -1,11 +1,11 @@
 #include "main.h"
 /**
-* print_binary - decimal to binary without use / %
-* @n: the decimal
-* Description: convert decimal to binary
-* section header: the header of this function is holberton.h
-* Return: no return
-*/
+ * print_binary - decimal to binary without use / %
+ * @n: the decimal
+ * Description: convert decimal to binary
+ * section header: the header of this function is main.h
+ * Return: no return
+ */
 void print_binary(unsigned long int n)
 {
 	int flag = 0;

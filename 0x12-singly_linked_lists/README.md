@@ -8,7 +8,6 @@
 
 2-add_node.c - Writes a function that adds a new node at the beginning of a list_t list.
 
-
 mandatory
 
 3-add_node_end.c - Writes a function that adds a new node at the end of a list_t list.
@@ -17,4 +16,4 @@ mandatory
 
 100-first.c - Writes a function that prints You're beat! and yet, you must allow,\nI bore my house upon my back!\n before the main function is executed.
 
-101-hello_holberton.asm - Writes a 64-bit program in assembly that prints Hello, Holberton, followed by a new line.
+101-hello_main.asm - Writes a 64-bit program in assembly that prints Hello, main, followed by a new line.

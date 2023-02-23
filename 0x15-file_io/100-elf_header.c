@@ -1,17 +1,17 @@
 #include <elf.h>
 #include "main.h"
 #define REV(n) ((n << 24) | (((n >> 16) << 24) >> 16) | \
-(((n << 16) >> 24) << 16) | (n >> 24))
+				(((n << 16) >> 24) << 16) | (n >> 24))
 /**
-* verify- verify the file to check if is a ELF
-* @e_ident: the ELF struct
-* return: no return is a void func.
-*/
+ * verify- verify the file to check if is a ELF
+ * @e_ident: the ELF struct
+ * return: no return is a void func.
+ */
 
 void verify(unsigned char *e_ident)
 {
 	if (*(e_ident) == 0x7f && *(e_ident + 1) == 'E' &&
-	    *(e_ident + 2) == 'L' && *(e_ident + 3) == 'F')
+		*(e_ident + 2) == 'L' && *(e_ident + 3) == 'F')
 	{
 		printf("ELF Header:\n");
 	}
@@ -23,10 +23,10 @@ void verify(unsigned char *e_ident)
 }
 
 /**
-* magic - print magic number
-* @e_ident: the ELF struct
-* return: no return is a void func.
-*/
+ * magic - print magic number
+ * @e_ident: the ELF struct
+ * return: no return is a void func.
+ */
 
 void magic(unsigned char *e_ident)
 {
@@ -41,10 +41,10 @@ void magic(unsigned char *e_ident)
 }
 
 /**
-* class - print the class of the ELF
-* @e_ident: the ELF struct
-* return: no return is a void func.
-*/
+ * class - print the class of the ELF
+ * @e_ident: the ELF struct
+ * return: no return is a void func.
+ */
 
 void class(unsigned char *e_ident)
 {
@@ -60,10 +60,10 @@ void class(unsigned char *e_ident)
 }
 
 /**
-* data - print mthe type of data
-* @e_ident: the ELF struct
-* return: no return is a void func.
-*/
+ * data - print mthe type of data
+ * @e_ident: the ELF struct
+ * return: no return is a void func.
+ */
 
 void data(unsigned char *e_ident)
 {
@@ -79,10 +79,10 @@ void data(unsigned char *e_ident)
 }
 
 /**
-* version - print the version of the file
-* @e_ident: the ELF struct
-* return: no return is a void func.
-*/
+ * version - print the version of the file
+ * @e_ident: the ELF struct
+ * return: no return is a void func.
+ */
 
 void version(unsigned char *e_ident)
 {
@@ -126,11 +126,11 @@ void osabi(unsigned char *e_ident)
 }
 
 /**
-* type - print the type
-* @e_ident: the ELF struct
-* @e_type: data to compare and print.
-* return: no return is a void func.
-*/
+ * type - print the type
+ * @e_ident: the ELF struct
+ * @e_type: data to compare and print.
+ * return: no return is a void func.
+ */
 
 void type(unsigned int e_type, unsigned char *e_ident)
 {
@@ -152,11 +152,11 @@ void type(unsigned int e_type, unsigned char *e_ident)
 }
 
 /**
-* entry - print the entry point
-* @e_ident: the ELF struct
-* @e_entry: the data to print
-* return: no return is a void func.
-*/
+ * entry - print the entry point
+ * @e_ident: the ELF struct
+ * @e_entry: the data to print
+ * return: no return is a void func.
+ */
 
 void entry(unsigned int e_entry, unsigned char *e_ident)
 {
@@ -168,12 +168,12 @@ void entry(unsigned int e_entry, unsigned char *e_ident)
 }
 
 /**
-* main - read a ELF file.
-* @argc: the number of args
-* @argv: the Args
-* section header: the header of this function is holberton.h
-* Return: 0 in success
-*/
+ * main - read a ELF file.
+ * @argc: the number of args
+ * @argv: the Args
+ * section header: the header of this function is main.h
+ * Return: 0 in success
+ */
 
 int main(int argc, char *argv[])
 {

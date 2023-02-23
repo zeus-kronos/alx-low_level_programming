@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
-  * _strlen - length of a string
-  * @s: input char
-  * Return: length of a string
-**/
+ * _strlen - length of a string
+ * @s: input char
+ * Return: length of a string
+ **/
 
 int _strlen(char *s)
 {
@@ -18,11 +18,11 @@ int _strlen(char *s)
 }
 
 /**
-* create_file - check the code for Holberton School students.
-* @filename: file to create.
-* @text_content: info to write into the file.
-* Return: 1 on success, -1 on failure
-*/
+ * create_file - check the code for main School students.
+ * @filename: file to create.
+ * @text_content: info to write into the file.
+ * Return: 1 on success, -1 on failure
+ */
 
 int create_file(const char *filename, char *text_content)
 {

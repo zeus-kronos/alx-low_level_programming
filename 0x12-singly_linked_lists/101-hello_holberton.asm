@@ -1,12 +1,12 @@
 section .data
-	msg: db "Hello, Holberton", 0x0a
+	msg: db "Hello, main", 0x0a
 	msglen equ $-msg
 
 section .text
 	global main
 
 main:
-	; write HelloHolberton to screen
+	; write Hellomain to screen
 	mov eax, 1 ; syscall for write
 	mov edi, 1
 	mov rsi, msg
