@@ -56,6 +56,15 @@ Topics covered in these projects include data structures (e.g. arrrays, linked l
 
 | 0x15-file_io |
 
+| 0x17-doubly_linked_lists |
+
+| 0x18-dynamic_libraries |
+
+| Hash tables |
+
+| 0x1A-hash_tables |
+
+
 ## Author 
 
 **Gabriel Dan** | **Alias:** *Zeus*
